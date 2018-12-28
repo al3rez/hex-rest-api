@@ -1,10 +1,11 @@
 package http
 
 import (
+	"encoding/json"
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"github.com/azbshiri/hex-rest-api/pkg/auth"
+	"github.com/gorilla/mux"
 )
 
 func NewRouter(a auth.Service) http.Handler {
@@ -12,7 +13,6 @@ func NewRouter(a auth.Service) http.Handler {
 	router.POST("/join", addUser(a))
 	return router
 }
-
 
 func addUser(s auth.Service) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -27,4 +27,3 @@ func addUser(s auth.Service) func(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(map[string]string{"msg": "New user added"})
 	}
 }
-
