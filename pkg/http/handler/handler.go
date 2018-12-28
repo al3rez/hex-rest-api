@@ -10,7 +10,9 @@ import (
 
 func NewRouter(a auth.Service) http.Handler {
 	router := mux.NewRouter()
-	router.POST("/join", addUser(a))
+	router.HandleFunc("/join", addUser(a)).
+		Methods("POST").
+		Headers("Content-Type", "application/json")
 	return router
 }
 
