@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/azbshiri/hex-rest-api/pkg/auth"
 	"github.com/azbshiri/hex-rest-api/pkg/http/handler"
 	"github.com/azbshiri/hex-rest-api/pkg/storage/mem"
 )
