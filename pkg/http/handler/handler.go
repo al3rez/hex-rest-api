@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/katzien/azbshiri/hex-rest-api/pkg/auth"
+	"github.com/azbshiri/hex-rest-api/pkg/auth"
 )
 
 func NewRouter(a auth.Service) http.Handler {
