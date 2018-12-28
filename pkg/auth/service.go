@@ -21,9 +21,9 @@ func NewService(r Repository) Service {
 }
 
 // AddUser adds the given user(s) to the database
-func (s *service) AddUser(b ...Beer) {
+func (s *service) AddUser(u ...User) {
 	// any validation can be done here
-	for _, user := range b {
+	for _, user := range u {
 		_ = s.bR.AddUser(user) // error handling omitted for simplicity
 	}
 }
