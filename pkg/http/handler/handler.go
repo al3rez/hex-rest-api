@@ -17,7 +17,7 @@ func NewRouter(a auth.Service) http.Handler {
 func addUser(s auth.Service) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var newUser auth.User
-		err := json.NewDecoder(r.Body).Decode(&newBeer)
+		err := json.NewDecoder(r.Body).Decode(&newUser)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
