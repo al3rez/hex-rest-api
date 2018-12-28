@@ -5,9 +5,12 @@ import (
 	"net/http"
 
 	"github.com/azbshiri/hex-rest-api/pkg/http/handler"
+	"github.com/azbshiri/hex-rest-api/pkg/storage/mem"
 )
 
 func main() {
-	router := handler.NewRouter()
+	s := new(mem.Storage)
+	auth := auth.NewService(s)
+	router := handler.NewRouter(auth)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
