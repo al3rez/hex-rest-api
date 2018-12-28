@@ -4,8 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/katzien/go-structure-examples/domain/listing"
-	"github.com/katzien/go-structure-examples/domain/reviewing"
+	"github.com/katzien/azbshiri/hex-rest-api/pkg/auth"
 )
 
 func NewRouter(a auth.Service) http.Handler {
@@ -15,7 +14,7 @@ func NewRouter(a auth.Service) http.Handler {
 }
 
 
-func addUser(s adding.Service) func(w http.ResponseWriter, r *http.Request) {
+func addUser(s auth.Service) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var newUser auth.User
 		err := json.NewDecoder(r.Body).Decode(&newBeer)
