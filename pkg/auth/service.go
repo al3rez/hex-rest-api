@@ -2,7 +2,7 @@ package auth
 
 // Service provides user authentication operations.
 type Service interface {
-	AddUser(...User)
+	AddUser(...User) error
 }
 
 // Repository provides access to user repository.
@@ -21,9 +21,14 @@ func NewService(r Repository) Service {
 }
 
 // AddUser adds the given user(s) to the database
-func (s *service) AddUser(u ...User) {
+func (s *service) AddUser(u ...User) error {
 	// any validation can be done here
 	for _, user := range u {
-		_ = s.bR.AddUser(user) // error handling omitted for simplicity
+		err := s.bR.AddUser(user)
+		if err != nil {
+			return err
+		}
 	}
+
+	return nil
 }
